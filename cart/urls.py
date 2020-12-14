@@ -1,5 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from .views import product_list_api, register_order
+
+app_name = "cart"
 
 urlpatterns = [
+    path('products/', product_list_api),
+    path('order/', register_order),
 ]
