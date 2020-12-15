@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cart.apps.CartConfig',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

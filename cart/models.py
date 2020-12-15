@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Product(models.Model):
@@ -28,8 +29,7 @@ class Product(models.Model):
 class Customer(models.Model):
     firstname = models.CharField(max_length=50, verbose_name="firstname")
     lastname = models.CharField(max_length=50, verbose_name="lastname")
-    phonenumber = models.CharField(
-        max_length=20, blank=True, verbose_name="phonenumber")
+    phonenumber = PhoneNumberField(blank=True, verbose_name="phonenumber")
     email = models.EmailField(
         max_length=100, blank=True, verbose_name="e-mail")
     address = models.TextField(verbose_name="address", null=True)
