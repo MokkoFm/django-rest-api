@@ -18,6 +18,11 @@ class OrderCreateView(generics.CreateAPIView):
     serializer_class = OrderSerializer
 
 
+class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = OrderListSerializer
+    queryset = Order.objects.all()
+
+
 class OrderListView(generics.ListAPIView):
     serializer_class = OrderListSerializer
     queryset = Order.objects.all()
