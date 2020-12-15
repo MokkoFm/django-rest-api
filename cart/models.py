@@ -10,7 +10,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="images", verbose_name="image of product")
 
     def __str__(self):
-        return self.name
+        return self.title
 
     @property
     def image_url(self):
@@ -30,7 +30,7 @@ class Customer(models.Model):
     lastname = models.CharField(max_length=50, verbose_name="lastname")
     phonenumber = models.CharField(
         max_length=20, blank=True, verbose_name="phonenumber")
-    email = models.CharField(
+    email = models.EmailField(
         max_length=100, blank=True, verbose_name="e-mail")
     address = models.TextField(verbose_name="address", null=True)
 
@@ -40,6 +40,18 @@ class Customer(models.Model):
     class Meta:
         verbose_name = "customer"
         verbose_name_plural = "customers"
+
+
+class Country(models.Model):
+    title = models.CharField(max_length=50, verbose_name="country")
+    vat = models.DecimalField(verbose_name='vat', max_digits=8, decimal_places=2)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "country"
+        verbose_name_plural = "countries"
 
 
 class Order(models.Model):
@@ -52,10 +64,13 @@ class Order(models.Model):
         default=timezone.now, verbose_name='data of registration')
     payment_method = models.CharField(
         max_length=4, choices=PAYMENT_METHOD,
-        default='Неизвестно', verbose_name='payment method')
+        default='Card', verbose_name='payment method')
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE,
         related_name='orders', verbose_name='customer of order', null=True)
+    country = models.ForeignKey(
+        Country, on_delete=models.CASCADE, related_name="orders", null=True,
+        verbose_name="country of order")
 
     def __str__(self):
         return f" Order number - {self.id}"
