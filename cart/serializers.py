@@ -14,6 +14,14 @@ class OrderItemSerializer(serializers.ModelSerializer):
         fields = ['quantity', 'product', 'order']
 
 
+class OrderItemListSerializer(serializers.ModelSerializer):
+    product = serializers.CharField(source="product.title", read_only=True)
+
+    class Meta:
+        model = OrderItem
+        fields = ['product', 'quantity', 'order']
+
+
 class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -22,7 +30,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
 
 class OrderListSerializer(serializers.ModelSerializer):
-    #products = OrderItemSerializer(many=True, read_only=True, source=)
+    order_items = OrderItemListSerializer(many=True)
     country = serializers.CharField(source="country.title", read_only=True)
     customer_lastname = serializers.CharField(source="customer.lastname")
     customer_firstname = serializers.CharField(source="customer.firstname")
@@ -34,8 +42,8 @@ class OrderListSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'registrated_at', 'payment_method',
             'customer_lastname', 'customer_firstname',
-            'phonenumber', 'email',
-            'country', 'order_items'
+            'phonenumber', 'email', 'country',
+            'order_items'
         ]
 
 
