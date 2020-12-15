@@ -15,6 +15,13 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+
+class OrderListSerializer(serializers.ModelSerializer):
     #products = OrderItemSerializer(many=True, read_only=True, source=)
     country = serializers.CharField(source="country.title", read_only=True)
     customer_lastname = serializers.CharField(source="customer.lastname")
@@ -25,7 +32,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = [
-            'registrated_at', 'payment_method',
+            'id', 'registrated_at', 'payment_method',
             'customer_lastname', 'customer_firstname',
             'phonenumber', 'email',
             'country', 'order_items'
