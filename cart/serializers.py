@@ -15,14 +15,16 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 
 class OrderItemListSerializer(serializers.ModelSerializer):
-    product = serializers.CharField(source="product.title", read_only=True)
+    product_title = serializers.CharField(
+        source="product.title", read_only=True)
+    product_id = serializers.CharField(source="product.id", read_only=True)
     price = serializers.DecimalField(
         source="product.price", read_only=True,
         max_digits=8, decimal_places=2)
 
     class Meta:
         model = OrderItem
-        fields = ['product', 'quantity', 'price', 'total']
+        fields = ['product_id', 'product_title', 'quantity', 'price', 'total']
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -35,6 +37,8 @@ class OrderSerializer(serializers.ModelSerializer):
 class OrderListSerializer(serializers.ModelSerializer):
     order_items = OrderItemListSerializer(many=True, read_only=True)
     country = serializers.CharField(source="country.title", read_only=True)
+    vat = serializers.DecimalField(
+        source="country.vat", read_only=True, max_digits=8, decimal_places=2)
     customer_lastname = serializers.CharField(source="customer.lastname")
     customer_firstname = serializers.CharField(source="customer.firstname")
     phonenumber = serializers.CharField(source="customer.phonenumber")
@@ -45,7 +49,7 @@ class OrderListSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'registrated_at', 'payment_method',
             'customer_lastname', 'customer_firstname',
-            'phonenumber', 'email', 'country',
+            'phonenumber', 'email', 'country', 'vat',
             'order_items', 'cart_total', 'cart_items_amount',
         ]
 
@@ -57,7 +61,8 @@ class CustomerSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    #user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    # I can implement current user in session later
+    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Product
