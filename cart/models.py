@@ -6,7 +6,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Product(models.Model):
     title = models.CharField(verbose_name='title', max_length=50)
-    description = models.TextField(verbose_name='description', blank=True)
+    description = models.TextField(
+        verbose_name='description', blank=True, max_length=250)
     price = models.DecimalField(
         verbose_name='price', max_digits=8, decimal_places=2)
     image = models.ImageField(
