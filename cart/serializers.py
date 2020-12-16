@@ -57,6 +57,8 @@ class CustomerSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    #user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Product
         fields = '__all__'

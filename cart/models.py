@@ -15,6 +15,9 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
     @property
     def image_url(self):
         try:
