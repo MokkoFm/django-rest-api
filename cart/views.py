@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from cart.models import Product, Customer, Order, OrderItem
-from cart.serializers import OrderSerializer, CustomerSerializer, OrderListSerializer
-from cart.serializers import OrderItemSerializer, ProductSerializer, OrderItemListSerializer
+from cart.serializers import OrderSerializer, OrderListSerializer
+from cart.serializers import CustomerSerializer, ProductSerializer
+from cart.serializers import OrderItemSerializer, OrderItemListSerializer
 from rest_framework import generics
-from rest_framework.serializers import ValidationError
 
 
 def index(request):
@@ -18,7 +18,7 @@ class OrderCreateView(generics.CreateAPIView):
     serializer_class = OrderSerializer
 
 
-class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
+class OrderDetailView(generics.RetrieveDestroyAPIView):
     serializer_class = OrderListSerializer
     queryset = Order.objects.all()
 

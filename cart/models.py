@@ -7,8 +7,10 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Product(models.Model):
     title = models.CharField(verbose_name='title', max_length=50)
     description = models.TextField(verbose_name='description', blank=True)
-    price = models.DecimalField(verbose_name='price', max_digits=8, decimal_places=2)
-    image = models.ImageField(upload_to="images", verbose_name="image of product")
+    price = models.DecimalField(
+        verbose_name='price', max_digits=8, decimal_places=2)
+    image = models.ImageField(
+        upload_to="images", verbose_name="image of product")
 
     def __str__(self):
         return self.title
@@ -44,7 +46,8 @@ class Customer(models.Model):
 
 class Country(models.Model):
     title = models.CharField(max_length=50, verbose_name="country")
-    vat = models.DecimalField(verbose_name='vat', max_digits=8, decimal_places=2)
+    vat = models.DecimalField(
+        verbose_name='vat', max_digits=8, decimal_places=2)
 
     def __str__(self):
         return self.title
