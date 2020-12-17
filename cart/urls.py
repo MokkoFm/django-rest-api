@@ -3,6 +3,7 @@ from cart.views import OrderCreateView, OrderListView, OrderDetailView
 from cart.views import CustomerCreateView, CustomerDetailView, CustomersListView
 from cart.views import OrderItemCreateView, OrderItemListView
 from cart.views import ProductCreateView, ProductDetailView, ProductsListView
+from cart.views import CountryCreateView, CountriesListView, CountryDetailView
 
 app_name = "cart"
 
@@ -17,5 +18,8 @@ urlpatterns = [
     path('order-items', OrderItemListView.as_view()),
     path('product/create', ProductCreateView.as_view()),
     path('products', ProductsListView.as_view()),
-    path('product-detail/<int:pk>', ProductDetailView.as_view())
+    path('product-detail/<int:pk>', ProductDetailView.as_view()),
+    path('country/create', CountryCreateView.as_view()),
+    path('countries', CountriesListView.as_view()),
+    path('country-detail/<int:pk>', CountryDetailView.as_view())
 ]

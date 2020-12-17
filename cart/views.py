@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from cart.models import Product, Customer, Order, OrderItem
+from cart.models import Product, Customer, Order, OrderItem, Country
 from cart.serializers import OrderSerializer, OrderListSerializer
 from cart.serializers import CustomerSerializer, ProductSerializer
 from cart.serializers import OrderItemSerializer, OrderItemListSerializer
+from cart.serializers import CountrySerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
@@ -72,3 +73,20 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class CountryCreateView(generics.CreateAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = CountrySerializer
+
+
+class CountriesListView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CountrySerializer
+    queryset = Country.objects.all()
+
+
+class CountryDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CountrySerializer
+    queryset = Country.objects.all()
