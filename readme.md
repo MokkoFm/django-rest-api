@@ -80,4 +80,4 @@ How to work with `Order-item`:
 
 ## Project's Purposes
 
-The code is written as a trial task for Qvantel.
+The code was written as a trial task for Qvantel.
