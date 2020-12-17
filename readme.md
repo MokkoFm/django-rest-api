@@ -37,7 +37,7 @@ python manage.py runserver
 ```
 
 ## Permissions 
-For using API you should be authenticated. You can use test superueser:
+For using API you should be authenticated. You can use test superuser:
 - `LOGIN - qvantel` 
 - `PASSWORD - 12345678` 
 
