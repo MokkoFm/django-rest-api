@@ -36,6 +36,11 @@ Run development server with command:
 python manage.py runserver
 ```
 
+## Permissions 
+For using API you should be authenticated. You can use test superueser:
+- `LOGIN - qvantel` 
+- `PASSWORD - 12345678` 
+
 ## Admin panel 
 
 Create superuser with command:
@@ -53,6 +58,25 @@ How to work with `Product`:
 - [Create product](https://cart-rest-api.herokuapp.com/api/product/create)
 - [List of products](https://cart-rest-api.herokuapp.com/api/products)
 - [Get product-detail](https://cart-rest-api.herokuapp.com/api/product-detail/1) 
+
+How to work with `Customer`:
+- [Create customer](https://cart-rest-api.herokuapp.com/api/customer/create) 
+- [List of customers](https://cart-rest-api.herokuapp.com/api/customers) 
+- [Get customer-detail](https://cart-rest-api.herokuapp.com/api/customer-detail/1) 
+
+How to work with `Country`:
+- [Create country](https://cart-rest-api.herokuapp.com/api/country/create) 
+- [List of countries](https://cart-rest-api.herokuapp.com/api/countries) 
+- [Get country-detail](https://cart-rest-api.herokuapp.com/api/country-detail/1) 
+
+How to work with `Order`:
+- [Create order](https://cart-rest-api.herokuapp.com/api/order/create) 
+- [List of orders](https://cart-rest-api.herokuapp.com/api/orders) 
+- [Get order-detail](https://cart-rest-api.herokuapp.com/api/order-detail/1) 
+
+How to work with `Order-item`:
+- [Create order-item](https://cart-rest-api.herokuapp.com/api/order-item/create) 
+- [List of order-items](https://cart-rest-api.herokuapp.com/api/order-items) 
 
 ## Project's Purposes
 
